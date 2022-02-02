@@ -5,14 +5,16 @@ const cors = require('cors')
 const PORT = 6500
 
 const app = express()
+const corsConfig = {
+  credentials: true
+}
 
 app.use(morgan('dev'))
-// app.use(cors({
-//   origin: ['http://localhost:6600', 'http://localhost:6500'],
-//   credentials: true
-// }))
+app.use(cors(corsConfig))
 
 app.get('/api/goods', (req, res) => {
+  // res.header('Access-Control-Allow-Origin', 'http://localhost:4000')
+
   res.json([
     '🍰 пирожные',
     '🍦 морожные',
